@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: my-node-app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - .:/app
+    restart: unless-stopped
+
+  redis:
+    image: redis
+    container_name: redis-server
+    ports:
+      - "6379:6379"
+    restart: unless-stopped

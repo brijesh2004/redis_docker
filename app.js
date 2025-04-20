@@ -9,7 +9,7 @@ app.get('/data', async (req, res) => {
 
   const cachedData = await redisClient.get(cacheKey);
   if (cachedData) {
-    return res.json({ from: 'cache', data: JSON.parse(cachedData) });
+    return res.json({ from: 'cache hai', data: JSON.parse(cachedData) });
   }
 
   // Simulate DB or external API call
